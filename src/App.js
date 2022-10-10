@@ -15,10 +15,8 @@ import BookDetailsPage from "./pages/BookDetailsPage";
 import AuthorDetailsPage from "./pages/AuthorDetailsPage";
 import UserProfilePage from "./pages/UserProfilePage";
 
-
-
 const App = () => {
-  const { isLoading, message } = useContext(AuthContext)
+  const { isLoading, message } = useContext(AuthContext);
   let token = localStorage.getItem("authToken");
   const LoggedIn = () => {
     return token ? <Outlet /> : <Navigate to="/" />;
@@ -28,7 +26,7 @@ const App = () => {
   };
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="*" element={<NotFound />} />
@@ -36,21 +34,19 @@ const App = () => {
         <Route element={<LoggedIn />}>
           <Route path="/delete-user" element={<DeleteUser />} />
         </Route>
-        
+
         <Route element={<NotLoggedIn />}>
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
         </Route>
-        
+
         <Route path="/search-results" element={<SearchResults />} />
         <Route path="/book-details" element={<BookDetailsPage />} />
         <Route path="/author-details" element={<AuthorDetailsPage />} />
         <Route path="/profile-page" element={<UserProfilePage />} />
-
       </Routes>
       {message && <p>{message}</p>}
       {isLoading && <p>Loading...</p>}
-      
     </div>
   );
 };

@@ -3,10 +3,7 @@ const Username = ({ setUsername }) => {
   return (
     <div>
       <label>Username</label>
-      <input
-        name="username"
-        onChange={(e) => setUsername(e.target.value)}
-      />
+      <input name="username" onChange={(e) => setUsername(e.target.value)} />
     </div>
   );
 };

@@ -10,7 +10,7 @@ const Navbar = () => {
           <Link to="/" className="nav-icon-image">
             <img className="nav-icon" src={""} alt="appIcon" />
           </Link>
-          <h2 className="nac-headline">Mern Shell</h2>
+          {/* <h2 className="nac-headline">Mern Shell</h2> */}
         </div>
         {user ? (
           <nav className="nav-items">
