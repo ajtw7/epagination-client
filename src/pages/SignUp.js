@@ -15,8 +15,7 @@ const SignUp = () => {
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
   const navigate = useNavigate();
-  const regexExp =
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/gi;
+  const regexExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/gi; 
 
     const checkError = (e) => {
 
@@ -65,6 +64,7 @@ const SignUp = () => {
             .finally(() => {
                 authenticateUser();
             });
+        }
 
             return (
                 <div className="home-landing">
@@ -79,7 +79,7 @@ const SignUp = () => {
                     </div>
                 </div>
                 );
-            };
+        
 };
 
 
