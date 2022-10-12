@@ -35,6 +35,9 @@ const Navbar = () => {
             <Link to="/login" className="icon">
               Log In
             </Link>
+            <Link to="/profile">
+              Profile
+            </Link>
           </nav>
         )}
       </header>

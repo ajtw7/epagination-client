@@ -1,7 +1,7 @@
 const Search = ({ setSearchTerm }) => {
  
     const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
+    setSearchTerm(e.target.value.replace(/ /g, '+'));
   };
 
   return (

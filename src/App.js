@@ -41,9 +41,9 @@ const App = () => {
         </Route>
 
         <Route path="/search/:searchTerm" element={<SearchResults />} />
-        <Route path="/book-details" element={<BookDetailsPage />} />
+        <Route path="/book-details/:work/:book" element={<BookDetailsPage />} />
         <Route path="/author-details" element={<AuthorDetailsPage />} />
-        <Route path="/profile-page" element={<UserProfilePage />} />
+        <Route path="/profile" element={<UserProfilePage />} />
       </Routes>
       {message && <p>{message}</p>}
       {isLoading && <p>Loading...</p>}

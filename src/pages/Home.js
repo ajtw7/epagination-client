@@ -1,8 +1,7 @@
 import { useState } from "react";
 import SearchResults from "./SearchResults";
 import { useNavigate} from "react-router-dom";
-
-  import Search from "../components/Search";
+import Search from "../components/Search";
 
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
