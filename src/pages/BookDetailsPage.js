@@ -1,12 +1,38 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../contexts/auth.context";
 import { useParams } from "react-router-dom";
+import { post } from "../authService/authService";
+
 import xtype from "xtypejs";
 
 const BookDetailsPage = () => {
+
+  const { message, setMessage } = useContext(AuthContext)
+
   const [book, setBook] = useState({});
   const [work, setWork] = useState({});
 
   const params = useParams();
+
+  const addToWishlist = (e) => {
+    e.preventDefault();
+    post('/wishlist/addToWishlist', {
+      bookTitle: work.title,
+      authorName: book.authors,
+      bookId: params.book
+    })
+  setMessage(`${work.title} has been added to your Wishlist.`)
+  }
+
+  const addToRead = () => {
+    post('/finishedBooks/addToReadList', {
+      bookTitle: work.title,
+      authorName: book.authors,
+      bookId: params.book
+    })
+  setMessage(`${work.title} has been added to your list of finished books.`)
+
+  }
 
   useEffect(() => {
     fetch(
@@ -38,8 +64,6 @@ const BookDetailsPage = () => {
       <p>number_of_pages_median</p>
       <p>details.description</p>
       <h6>subjects</h6>
-      <button>Wishlist</button>
-      <button>Already Read </button>
 
       {book.authors &&
         book.authors.map((author) => {
@@ -59,6 +83,10 @@ const BookDetailsPage = () => {
           )}
         </div>
       )}
+
+      <button onClick={addToWishlist}>Wishlist</button>
+      <button onClick={addToRead}>Already Read </button>
+      {/* {message && <p>{message}</p>} */}
     </div>
   );
 };
