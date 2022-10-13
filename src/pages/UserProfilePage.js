@@ -1,21 +1,15 @@
 import { useEffect, useState, useContext } from "react";
-import Wishlist from "../components/Wishlist";
 import { get } from "../authService/authService";
-
-// import { AuthContext } from "../contexts/auth.context";
-// import { useParams } from "react-router-dom";
+import Wishlist from "../components/Wishlist";
+import FinishedBooks from "../components/FinishedBooks";
 
 const UserProfilePage = () => {
-
-  const [profileInfo, setProfileInfo] = useState({})
-  // const {wishlist, setWishList} = useState([])
-  // const {readlist, setReadList} = useState([])
-
+  const [profileInfo, setProfileInfo] = useState({});
 
   useEffect(() => {
     get("/users/profile").then((res) => {
       console.log(res.data[0], "RESPONSE");
-      setProfileInfo(res.data[0])
+      setProfileInfo(res.data[0]);
     });
   }, []);
 
@@ -35,9 +29,7 @@ const UserProfilePage = () => {
         <h3>
           <u>Finished Books</u>
         </h3>
-        <img src="" alt="finishedBook_id" />
-        <img src="" alt="finishedBook_id" />
-        <img src="" alt="finishedBook_id" />
+        <FinishedBooks finishedBook={profileInfo.finishedBooks} />
       </div>
     </div>
   );
