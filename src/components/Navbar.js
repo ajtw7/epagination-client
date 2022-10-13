@@ -23,6 +23,9 @@ const Navbar = () => {
             <button onClick={logout} className="icon">
               Logout
             </button>
+            <Link to="/profile">
+              Profile
+            </Link>
           </nav>
         ) : (
           <nav className="nav-items">
@@ -34,9 +37,6 @@ const Navbar = () => {
             </Link>
             <Link to="/login" className="icon">
               Log In
-            </Link>
-            <Link to="/profile">
-              Profile
             </Link>
           </nav>
         )}
