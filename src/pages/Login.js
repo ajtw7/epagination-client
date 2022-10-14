@@ -37,10 +37,13 @@ const Login = () => {
   return (
     <div className="home-landing">
       <div className="home-container">
+      <h1>Welcome to ePagination Digital Library</h1>
         <form onSubmit={submit}>
-          <Username setUsername={setUsername} />
-          <Password setPassword={setPassword} />
+          <div className="login-box">
+            <Username setUsername={setUsername} />
+            <Password setPassword={setPassword} />
           <button>Submit</button>
+          </div>
         </form>
       </div>
     </div>

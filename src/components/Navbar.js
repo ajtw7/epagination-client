@@ -7,9 +7,9 @@ const Navbar = () => {
     <div className="navbar">
       <header className="nav-wrapper">
         <div className="nav-icon-container">
-          <Link to="/" className="nav-icon-image">
+          {/* <Link to="/" className="nav-icon-image">
             <img className="nav-icon" src={""} alt="appIcon" />
-          </Link>
+          </Link> */}
           {/* <h2 className="nac-headline">Mern Shell</h2> */}
         </div>
         {user ? (
@@ -20,12 +20,12 @@ const Navbar = () => {
             <Link to="/delete-user" className="icon">
               Delete User
             </Link>
-            <button onClick={logout} className="icon">
-              Logout
-            </button>
             <Link to="/profile">
               Profile
             </Link>
+            <button onClick={logout} className="icon">
+              Logout
+            </button>
           </nav>
         ) : (
           <nav className="nav-items">
