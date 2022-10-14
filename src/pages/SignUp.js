@@ -69,12 +69,13 @@ const SignUp = () => {
   return (
     <div className="home-landing">
       <div className="home-container">
+      <h1>Sign Up for an Account</h1>
         <form onSubmit={checkError}>
           <Username setUsername={setUsername} />
           <Email setEmail={setEmail} />
           <Password setPassword={setPassword} />
           <ConfirmPassword setConfirmPassword={setConfirmPassword} />
-          <button>Submit</button>
+          <button id="sign-up-submit">Submit</button>
         </form>
       </div>
     </div>
