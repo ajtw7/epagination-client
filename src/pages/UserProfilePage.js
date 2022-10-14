@@ -15,20 +15,13 @@ const UserProfilePage = () => {
 
   return (
     <div>
-      <h1>Welcome User</h1>
+      <h1>Welcome, {profileInfo.username}</h1>
+      <p>The email associated to your account is: {profileInfo.email}</p>
       <hr />
-      <h3>Email Address</h3>
-      <p>{profileInfo.email}</p>
       <div>
-        <h3>
-          <u>Wishlist</u>
-        </h3>
         <Wishlist wishlist={profileInfo.wishlist} />
       </div>
       <div>
-        <h3>
-          <u>Finished Books</u>
-        </h3>
         <FinishedBooks finishedBook={profileInfo.finishedBooks} />
       </div>
     </div>
