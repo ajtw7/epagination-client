@@ -358,7 +358,7 @@ form {
   margin-top: 20px;
 }
 
-.username-box-component, .password-box-component {
+.username-box-component, .password-box-component, .confirm-password-component, .email-component {
   display: flex;
   flex-direction: column;
 
