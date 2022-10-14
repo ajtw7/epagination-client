@@ -32,7 +32,197 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.home-landing {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 80vh;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: auto;
+  border: 1px solid black;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  padding: 51px 0;
+}
+
+.home-container * {
+  margin: 5px;
+}
+
+/* ----------------------------------Search bar------------------------ */
+
+.search-wrapper {
+  position: relative;
+  display: flex;
+  min-width: 300px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  width: 14px;
+}
+
+.clear-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 10px;
+  cursor: pointer;
+  /* visibility: hidden; */
+}
+
+
+.search {
+  border: 1px solid grey;
+  border-radius: 5px;
+  height: 20px;
+  width: 100%;
+  padding: 2px 23px 2px 30px;
+  outline: 0;
+  /* background-color: #f5f5f5; */
+}
+
+.search:hover,
+.search:focus {
+  border: 1.5px solid #009688;
+  background-color: white;
+}
+
+/* ----------------------------------Search bar (end)------------------------ */
+
+/* ----------------------------------Search Results------------------------ */
+
+.search-results-landing {
+  display: flex;
+  width: 90vw;
+  height: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  margin: 0 auto;
+}
+
+.search-results-container {
+  display: flex;
+  /* flex-direction: column; */
+  width: 100vw;
+  height: auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#book-image {
+  width: 30%;
+  height: auto;
+}
+
+#book-image-div {
+
+}
+
+.search-results-return {
+  display: flex;
+  width: 30%;
+  height: 50vh;
+  /* padding: 2px; */
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  border: 1px solid black;
+  
+
+
+}
+
+.individual-result {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2px 0;
+}
+
+
+/* .search-results-return {
+  display: flex;
+  width: 100%;
+  height: auto;
+  flex-wrap: wrap;
+
+} */
+
+/* ----------------------------------Search Results (end)------------------------ */
+/* ----------------------------------Books Details Page ------------------------ */
+
+
+.books-details-landing {
+  display: flex;
+  width: 70%;
+  height: 80vh;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  margin: 20px auto 0;
+
+}
+.book-details-container {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  height: 50vh;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.authors-group {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+.authors-group * {
+  margin: 5px;
+}
+
+.btn-group {
+  display: flex;
+  width: 40%;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-group * {
+  padding: 5px;
+  margin: 5px;
+}
+
+.btn-group button {
+  width: 300px;
 }

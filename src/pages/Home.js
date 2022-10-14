@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <div className="home-landing">
       <div className="home-container">
-        <h1 className="home-text">Welcome to Le Shell!</h1>
+        <h1 className="home-text">ePagination</h1>
           
         <form onSubmit={searchSubmit}>
           <Search setSearchTerm={setSearchTerm}/>

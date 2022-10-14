@@ -21,6 +21,7 @@ const Login = () => {
       .then((results) => {
         localStorage.setItem("authToken", results.data.token);
         localStorage.setItem("id", results.data.id);
+        console.log(results.data.message, "LOGIN MESSAGE")
         setMessage(results.data.message);
         navigate("/");
       })
