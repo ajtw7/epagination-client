@@ -1,21 +1,46 @@
-import { useEffect, useState, useContext } from "react";
-import { AuthContext } from "../contexts/auth.context";
-import { useParams } from "react-router-dom";
-import { post } from "../authService/authService";
+import { useContext } from 'react';
+import { useQuery } from 'react-query';
+import { AuthContext } from '../contexts/auth.context';
+import { useParams } from 'react-router-dom';
+import { post } from '../authService/authService';
+import { fetchBook } from '../services/bookService';
+import { fetchWork } from '../services/workService';
 
-import xtype from "xtypejs";
+import xtype from 'xtypejs';
 
 const BookDetailsPage = () => {
   const { message, setMessage } = useContext(AuthContext);
-
-  const [book, setBook] = useState({});
-  const [work, setWork] = useState({});
-
   const params = useParams();
+
+  /* Query to fetch the specific book */
+  const {
+    data: book,
+    isLoading: bookLoading,
+    isError: bookError,
+    error: bookFetchError,
+  } = useQuery(['book', params.book], () => fetchBook(params.book));
+
+  /* Query to fetch the specific work. This is the same as the book query, but with a different key and function */
+  const {
+    data: work,
+    isLoading: workLoading,
+    isError: workError,
+    error: workFetchError,
+  } = useQuery(['work', params.work], () => fetchWork(params.work));
+
+  if (bookLoading || workLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (bookError || workError) {
+    return (
+      <div>Error: {bookFetchError?.message || workFetchError?.message}</div>
+    );
+  }
 
   const addToWishlist = (e) => {
     e.preventDefault();
-    post("/wishlist/addToWishlist", {
+    post('/wishlist/addToWishlist', {
       bookTitle: work.title,
       authorName: book.authors,
       bookId: params.book,
@@ -24,33 +49,13 @@ const BookDetailsPage = () => {
   };
 
   const addToRead = () => {
-    post("/finishedBooks/addToReadList", {
+    post('/finishedBooks/addToReadList', {
       bookTitle: work.title,
       authorName: book.authors,
       bookId: params.book,
     });
     setMessage(`${work.title} has been added to your list of finished books.`);
   };
-
-  useEffect(() => {
-    fetch(
-      `https://openlibrary.org/api/books?bibkeys=OLID:${params.book}&jscmd=data&format=json`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(Object.values(data)[0], "DATA");
-        setBook(Object.values(data)[0]);
-      })
-      .catch((err) => console.log(err));
-
-    fetch(`https://openlibrary.org/works/${params.work}.json`)
-      .then((res) => res.json())
-      .then((info) => {
-        console.log(info, "info");
-        setWork(info);
-      })
-      .catch((err) => console.log(err));
-  }, []);
 
   return (
     <div className="books-details-landing">
@@ -62,13 +67,6 @@ const BookDetailsPage = () => {
             alt="preview of book"
           ></img>
         </div>
-        {/* <h6>book link</h6>
-      <h3>author</h3>
-      <h5>isbn</h5>
-      <p>number_of_pages_median</p>
-      <p>details.description</p>
-      <h6>subjects</h6> */}
-
         <div className="authors-group">
           {book.authors &&
             book.authors.map((author) => {
@@ -81,7 +79,7 @@ const BookDetailsPage = () => {
         </div>
         {work.description && (
           <div>
-            {xtype.type(work.description) === "string" ? (
+            {xtype.type(work.description) === 'string' ? (
               <p>{work.description}</p>
             ) : (
               <p>{work.description.value}</p>
@@ -92,7 +90,6 @@ const BookDetailsPage = () => {
           <button onClick={addToWishlist}>Wishlist</button>
           <button onClick={addToRead}>Already Read </button>
         </div>
-        {/* {message && <p>{message}</p>} */}
       </div>
     </div>
   );
