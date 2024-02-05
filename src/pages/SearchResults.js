@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
 
 const SearchResults = () => {
   const [results, setResults] = useState([]);
@@ -12,7 +12,7 @@ const SearchResults = () => {
     fetch(`https://openlibrary.org/search.json?title=${params.searchTerm}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data, "DATA");
+        console.log(data, 'DATA');
         // console.log(data.docs);
         setResults(data.docs);
       })
@@ -33,13 +33,14 @@ const SearchResults = () => {
                   <div className="individual-result">
                     <h4>{result.title}</h4>
                     <h4>
-                      {result.author_name && result.author_name.join(", ")}
+                      {result.author_name && result.author_name.join(', ')}
                     </h4>
 
-                      <img id="book-image"
-                        alt="cover not found"
-                        src={`https://covers.openlibrary.org/b/id/${result.cover_i}-L.jpg`}
-                      />
+                    <img
+                      id="book-image"
+                      alt="cover not found"
+                      src={`https://covers.openlibrary.org/b/id/${result.cover_i}-L.jpg`}
+                    />
 
                     <Link
                       to={`/book-details/${result.key.slice(7)}/${
@@ -50,14 +51,6 @@ const SearchResults = () => {
                     </Link>
                   </div>
                 )}
-
-                {/* <h5>{result.isbn && result.isbn[0]}</h5>
-                <p>{result.number_of_pages_median}</p>
-                <ul>
-                  <h6>{result.subject && result.subject[0]}</h6>
-                  <h6>{result.subject && result.subject[1]}</h6>
-                  <h6>{result.subject && result.subject[2]}</h6>
-                </ul> */}
               </div>
             );
           })}
@@ -67,3 +60,5 @@ const SearchResults = () => {
 };
 
 export default SearchResults;
+
+// init gh pull request -> refact001
