@@ -1,17 +1,18 @@
-import { useEffect, useState, useContext } from "react";
-import { get } from "../authService/authService";
-import Wishlist from "../components/Wishlist";
-import FinishedBooks from "../components/FinishedBooks";
+// import { useEffect, useState, useContext } from 'react';
+import useFetchUserProfile from '../services/fetchUserProfile';
+import Wishlist from '../components/Wishlist';
+import FinishedBooks from '../components/FinishedBooks';
 
 const UserProfilePage = () => {
-  const [profileInfo, setProfileInfo] = useState({});
+  const { profileInfo, error, isLoading } = useFetchUserProfile();
 
-  useEffect(() => {
-    get("/users/profile").then((res) => {
-      console.log(res.data[0], "RESPONSE");
-      setProfileInfo(res.data[0]);
-    });
-  }, []);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
   return (
     <div>
